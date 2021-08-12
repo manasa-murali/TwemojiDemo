@@ -13,11 +13,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val twitterEmojiProvider = TwitterEmojiProvider()
+        EmojiManager.install(twitterEmojiProvider)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val twitterEmojiProvider = TwitterEmojiProvider()
-        EmojiManager.install(twitterEmojiProvider)
         var editableText = SpannableStringBuilder()
         twitterEmojiProvider.categories.forEach { emojiCategory ->
             emojiCategory.emojis.forEach { emoji ->
